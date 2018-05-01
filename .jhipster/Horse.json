@@ -1,0 +1,98 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "person",
+            "otherEntityName": "person",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "stable",
+            "otherEntityName": "stable",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "pictures",
+            "otherEntityName": "picture",
+            "otherEntityRelationshipName": "horse"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "videos",
+            "otherEntityName": "video",
+            "otherEntityRelationshipName": "horse"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "competitions",
+            "otherEntityName": "competition",
+            "otherEntityRelationshipName": "horse"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "medChecks",
+            "otherEntityName": "medCheck",
+            "otherEntityRelationshipName": "horse"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "levelDressuur",
+            "otherEntityName": "levelDressuur",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "levelJumping",
+            "otherEntityName": "levelJumping",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "race",
+            "otherEntityName": "race",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "birthday",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "descentFather",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descentMother",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gender",
+            "fieldType": "Gender",
+            "fieldValues": "RUIN,MERRIE"
+        },
+        {
+            "fieldName": "height",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "color",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180501192508",
+    "javadoc": "Horse entity.\n@author Koen.",
+    "entityTableName": "horse",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix"
+}
