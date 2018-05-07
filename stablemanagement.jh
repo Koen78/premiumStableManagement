@@ -1,0 +1,136 @@
+/**
+* Person entity.
+ * @author Koen.
+ */
+ entity Person {
+ 	name String,
+    mobile String,
+    email String,
+    language Language
+ }
+/**
+* Stable entity.
+ * @author Koen.
+ */ 
+ entity Stable {
+ 	description String,
+    street String, 
+    houseNumber String,
+    postalcode String,
+    city String
+ }
+/**
+* Horse entity.
+ * @author Koen.
+ */
+entity Horse  {
+	name String,
+    birthday LocalDate,
+    descentFather String,
+    descentMother String,
+    gender Gender,
+    height String,
+    color String
+}
+/**
+* Race entity.
+ * @author Koen.
+ */
+entity Race {
+	description String
+}
+/**
+* Race LevelDressuur.
+ * @author Koen.
+ */
+entity LevelDressuur {
+	code String,
+	description String
+}
+/**
+* Race LevelJumping.
+ * @author Koen.
+ */
+entity LevelJumping {
+	code String,
+    description String
+}
+/**
+* Race LevelDressuurHis.
+ * @author Koen.
+ */
+entity LevelDressuurHis {
+	date LocalDate
+}
+/**
+* Race LevelJumpingHis.
+ * @author Koen.
+ */
+entity LevelJumpingHis {
+	date LocalDate
+}
+entity Picture {
+	date LocalDate,
+	description String,
+    image ImageBlob
+}
+entity MedCheck {
+	date LocalDate,
+    shortDescription String,
+    resultDescription String,
+    pdf AnyBlob
+}
+entity MedCheckDetail {
+	code String,
+    result String
+}
+entity MedCheckXray {
+	description String,
+    image ImageBlob
+}
+entity Video {
+	date LocalDate,
+	description String,
+    youTubeUrl String
+}
+entity Competition {
+	date LocalDate,
+    description String, 
+    result String
+}
+
+relationship ManyToOne {
+    Horse{levelDressuur} to LevelDressuur,
+    Horse{levelJumping} to LevelJumping,
+    Horse{Race} to Race,
+    LevelDressuurHis{levelDressuur} to LevelDressuur,
+    LevelJumpingHis{levelJumping} to LevelJumping
+}
+
+relationship OneToMany {
+	Stable{horses} to Horse,
+    Person{stables} to Stable,
+    Person{Horses} to Horse,
+    Stable{owners} to Person,
+    Horse{pictures} to Picture,
+    Horse{videos} to Video,
+    Horse{competitions} to Competition,
+    Horse{medChecks} to MedCheck,
+    MedCheck{details} to MedCheckDetail,
+    MedCheck{xrays} to MedCheckXray
+}
+enum Gender { 
+	RUIN, MERRIE
+}
+enum Language {
+    DUTCH, GERMAN, FRENCH, ENGLISH, SPANISH
+}
+// Set pagination options
+paginate Person, Horse, Stable with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+// Set an angular suffix
+angularSuffix * with mySuffix
